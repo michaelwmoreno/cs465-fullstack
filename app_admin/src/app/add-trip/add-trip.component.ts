@@ -6,8 +6,6 @@ import { TripDataService } from '../services/trip-data.service';
 
 @Component({
   selector: 'app-add-trip',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule], // Make sure to import ReactiveFormsModule
   templateUrl: './add-trip.component.html',
   styleUrls: ['./add-trip.component.css'] // Corrected from 'styleUrl' to 'styleUrls'
 })
@@ -35,17 +33,13 @@ export class AddTripComponent implements OnInit {
     });
   }
 
-  public onSubmit() {
+  onSubmit() {
+    console.log('TripAddComponent#onSubmit calling TripDataService#Trip');
     this.submitted = true;
     if (this.addForm.valid) {
-      this.tripService.addTrip(this.addForm.value).subscribe({
-        next: (data: any) => {
-          console.log('Trip added successfully:', data);
-          this.router.navigate(['/']); // Make sure this route is correctly configured in your routing module
-        },
-        error: (error: any) => {
-          console.error('Error:', error); // It's a good practice to use console.error for errors
-        }
+      this.tripService.addTrip(this.addForm.value).then((data)=>{
+        console.log('TripAddComponent@onSubmit data',data);
+        this.router.navigate(['']);
       });
     }
   }
