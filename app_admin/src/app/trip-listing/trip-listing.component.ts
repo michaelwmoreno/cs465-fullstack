@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Trip } from '../models/trip';
 import { TripDataService } from '../services/trip-data.service';
 import { Router } from '@angular/router';
@@ -23,7 +22,6 @@ export class TripListingComponent implements OnInit {
   ) { }
 
   ngOnInit(): void{
-    console.log('ngOnInit');
     this.getTrips();
   }
 

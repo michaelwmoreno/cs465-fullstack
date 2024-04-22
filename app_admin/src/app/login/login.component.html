@@ -10,7 +10,7 @@
                 <label for="txtPassword">Password</label>
                 <input type="password" class="form-control" formControlName="password" name="txtPassword" id="txtPassword" required />
             </div>
-            <div class="alert alert-danger" role="alert" [class.hide-alert="!formInvalid">
+            <div class="alert alert-danger" role="alert" [class.hide-alert]="!formInvalid">
                 {{ formErrorMsg }}
             </div>
             <button type="submit" class="btn btn-info">Sign in</button>

@@ -2,8 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angular/forms";
 import { Router } from "@angular/router";
 import { TripDataService } from "../services/trip-data.service";
-import { Trip } from "../models/trip";
-import { CommonModule } from "@angular/common";
 
 @Component({
   selector: "app-edit-trip",
@@ -29,7 +27,7 @@ export class EditTripComponent {
       this.router.navigate([""]);
       return;
     }
-    console.log("EditTripComponent#onInit found tripCode " + tripCode);
+    console.log("EditTripComponent#onInit found tripCode " + this.tripCode);
     // initialize form
     this.editForm = this.formBuilder.group({
       _id: [],
@@ -59,6 +57,7 @@ export class EditTripComponent {
       {
         this.tripDataService.updateTrip(this.editForm.value).then((data)=> {
           console.log('EditTripComponent#onSubmit data', data);
+          this.router.navigate(['']);
         });
     }
   }
